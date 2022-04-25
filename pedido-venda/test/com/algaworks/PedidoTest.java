@@ -1,9 +1,15 @@
 package com.algaworks;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.algaworks.desconto.CalculadoraDescontoPrimeiraFaixa;
+import com.algaworks.desconto.CalculadoraDescontoSegundaFaixa;
+import com.algaworks.desconto.CalculadoraDescontoTerceiraFaixa;
+import com.algaworks.desconto.CalculadoraFaixaDesconto;
+import com.algaworks.desconto.SemDesconto;
 
 public class PedidoTest {
 	
@@ -11,7 +17,13 @@ public class PedidoTest {
 	
 	@Before
 	public void setup() {
-		pedido = new Pedido();
+		CalculadoraFaixaDesconto calculadoraFaixaDesconto =
+			new CalculadoraDescontoTerceiraFaixa(
+				 new CalculadoraDescontoSegundaFaixa(
+						new CalculadoraDescontoPrimeiraFaixa(
+							 new SemDesconto(null))));
+		
+		pedido = new Pedido(calculadoraFaixaDesconto);
 	}
 
 	private void assertResumoDoPedido(double valorTotal, double desconto) {

@@ -16,7 +16,7 @@ public class ResumoPedido {
 	}
 
 	public void setValorTotal(double valorTotal) {
-		valorTotal = valorTotal;
+		this.valorTotal = valorTotal;
 	}
 
 	public double getDesconto() {
