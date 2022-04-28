@@ -14,7 +14,8 @@ public abstract class CalculadoraFaixaDesconto {
 		if (desconto == -1) 
 			return proximo.desconto(valorTotal);
 			
-			return desconto;		
+			return desconto;	
+		
 	}
 
 	protected abstract double calcular(double valorTotal);
